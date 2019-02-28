@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/css/main.css}">
+<title>Shop - products List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1 id="title" th:text="'【﻿Ｂｏｕｔｉｑｕｅ　Ｇｅｒａｒｄ　ｅｔ　ＣＩＥ】'"></h1>
+	<div class="all">
+	<table class="mainTable">
+
+		<tr>
+			<th>Id</th>
+			<th>Code</th>
+			<th>Label</th>
+			<th>Price</th>
+			<th>Add</th>
+
+		</tr>
+		<tr th:each="item : ${list}">
+
+			<td th:text="${item.id}"></td>
+			<td th:text="${item.code}"></td>
+			<td th:text="${item.label}"></td>
+			<td th:text="${item.price}"></td>
+			<td width="30"><a th:href="@{'/add/' + ${item.id}}"><img
+					style="width: 30px; height: 30px;"
+					th:src="@{/resources/img/ajout.jpg}"></a></td>
+
+		</tr>
+	</table>
+
+	<form th:action="@{/panier}">
+		<input class="button" type="submit" value="Voir Panier" />
+	</form>
+	<form th:action="@{/recap}">
+		<input class="button" type="submit" value="Voir Récapitulatif" />
+	</form>
+	</div>
+</html>

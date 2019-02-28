@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/css/main.css}">
+<title>Shop - Order summary</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<h1 id="title" th:text="'Panier - Récapitulatif'"></h1>
+
+
+	<table class="mainTable">
+
+		<tr id="titreListe">
+			<th>code</th>
+			<th>label</th>
+			<th>price</th>
+			<th>quantity</th>
+
+
+		</tr>
+
+		<tr id="liste" th:each=" item : ${list}">
+
+			<td th:text="${item.code}"></td>
+			<td th:text="${item.label}"></td>
+			<td th:text="${item.price}"></td>
+			<td th:text="${item.quantite}"></td>
+		</tr>
+	</table>
+	<p th:text="'Prix total : ' + ${total}">
+	<form th:action="@{/}">
+		<input class="button" type="submit" value="Retour au site" />
+	</form>
+		<form th:action="@{/cb}">
+		<input class="button" type="submit" value="Paiement" />
+	</form>
+</body>
+</html>

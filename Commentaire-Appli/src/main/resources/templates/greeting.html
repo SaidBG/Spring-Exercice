@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+   <table class="mainTable">
+
+		<tr>
+			<th>Id</th>
+			<th>Code</th>
+			<th>Label</th>
+			<th>Price</th>
+			<th>Add</th>
+
+		</tr>
+		<tr th:each="gens : ${list}">
+
+			<td th:text="${gens.id}"></td>
+			<td th:text="${gens.name}"></td>
+			<td th:text="${gens.firstName}"></td>
+			<td width="30"><a th:href="@{'/delete/' + ${gens.id}}">delete</a></td>
+		</tr>
+	</table>
+	<a th:href="@{/add}">Add</a>
+</body>
+</html>

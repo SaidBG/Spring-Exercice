@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/main.css"
+	th:href="@{/css/main.css}" />
+</head>
+<body>
+	<div class="all">
+		<table id="tableau">
+
+			<tr id="titreListe">
+				<th>ID</th>
+				<th>Nom Latin</th>
+				<th>Nom Commun</th>
+
+			</tr>
+			<tr>
+			<tr id="liste" th:each="specie : ${list}">
+
+				<td th:id=${specie.id} th:text="${specie.id}"></td>
+				<td th:text="${specie.latinName}"></td>
+				<td th:text="${specie.commonName}"></td>
+				<td><a id="delete" th:href="@{|/specie/${specie.id}/delete/|}">Delete</a></td>
+				<td><a id="update" th:href="@{|/update/${specie.id}|}">Update</a></td>
+			</tr>
+		</table>
+	<div class="triangle"></div>
+		<a id="create" th:href="@{|/create|}">Create</a>
+	</div>
+</body>
+</html>

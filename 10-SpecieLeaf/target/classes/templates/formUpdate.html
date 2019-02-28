@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form th:object="${specie}" th:action="@{/specie/update}" method="post">
+CommonName : <input type="text" th:field="*{commonName}"><br>
+Latin name: <input type="text" th:field="*{latinName}"><br>
+<input type="submit" value="Submit">
+
+</form>
+</body>
+</html>

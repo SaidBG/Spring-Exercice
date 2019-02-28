@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/css/main.css}">
+<title>Shop - Basket</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<h1 id="title" th:text="'Panier - Liste des articles choisis'"></h1>
+
+
+	<table class="mainTable">
+
+		<tr id="titreListe">
+			<th>code</th>
+			<th>label</th>
+			<th>price</th>
+			<th>quantity</th>
+			<th>delete</th>
+
+		</tr>
+		
+		<tr id="liste" th:each=" item,iter : ${listItem}">
+
+
+			<td th:text="${item.code}"></td>
+			<td th:text="${item.label}"></td>
+			<td th:text="${item.price}"></td>
+			
+			<td>
+			<form id="form"  th:action="@{/panier/update}" method="post">
+			<input type="number" th:value="${item.quantite}" name="nb">
+				
+			<input type="submit" value="Mettre à jour"/>
+			</form>			
+			 </td>
+			 
+			 
+			<td width="30"><a th:href="@{'/delete/' + ${iter.index}}"><img
+					style="width: 30px; height: 30px;"
+					th:src="@{/resources/img/suppression.jpg}"></a></td>
+
+		</tr>
+	</table>
+	<p th:text="'Prix total : ' + ${total}">
+	<form th:action="@{/updateQuantite}">
+		<input class="button" type="submit" value="Mise à jour" />
+	</form>
+	<form th:action="@{/}">
+		<input class="button" type="submit" value="Retour au site" />
+	</form>
+	<form th:action="@{/recap}">
+		<input class="button" type="submit" value="Payer" />
+	</form>
+
+</body>
+</html>
